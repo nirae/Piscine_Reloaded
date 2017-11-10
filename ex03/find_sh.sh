@@ -1,3 +1,3 @@
 #! /bin/sh
 
-find . -name "*.sh" | sed "s~\./~~g" | sed "s~\.sh~~g"
+find . -name "*.sh" | rev | cut -c 4- | cut -d / -f 1 | rev
