@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_point.h                                         :+:      :+:    :+:   */
+/*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ndubouil <ndubouil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/10 10:05:20 by ndubouil          #+#    #+#             */
-/*   Updated: 2017/11/10 16:41:15 by ndubouil         ###   ########.fr       */
+/*   Created: 2017/11/10 16:16:47 by ndubouil          #+#    #+#             */
+/*   Updated: 2017/11/10 16:39:40 by ndubouil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_POINT_H
-# define FT_POINT_H
+#include "ft.h"
 
-typedef struct		s_point
+int		ft_error(int n)
 {
-	int x;
-	int y;
-}					t_point;
-
-#endif
+	if (n == 1)
+	{
+		ft_putstr("File name missing.\n");
+		return (1);
+	}
+	else if (n > 2)
+	{
+		ft_putstr("Too many arguments.\n");
+		return (1);
+	}
+	return (0);
+}

@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_point.h                                         :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ndubouil <ndubouil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/10 10:05:20 by ndubouil          #+#    #+#             */
-/*   Updated: 2017/11/10 16:41:15 by ndubouil         ###   ########.fr       */
+/*   Created: 2017/11/10 16:26:29 by ndubouil          #+#    #+#             */
+/*   Updated: 2017/11/10 16:37:28 by ndubouil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_POINT_H
-# define FT_POINT_H
+#include "ft.h"
 
-typedef struct		s_point
+int		main(int argc, char **argv)
 {
-	int x;
-	int y;
-}					t_point;
+	int		fd;
+	int		ret;
+	char	buf[BUF_SIZE + 1];
 
-#endif
+	if (ft_error(argc))
+		return (0);
+	fd = open(argv[1], O_RDONLY);
+	while ((ret = read(fd, buf, BUF_SIZE)))
+	{
+		buf[ret] = '\0';
+		write(1, buf, ret);
+	}
+	close(fd);
+	return (0);
+}
